@@ -1,0 +1,20 @@
+import psycopg2
+import psycopg2.extras
+ 
+try:
+    #Efetua a conexao com o banco de dados
+    conn = psycopg2.connect("dbname='%s' user='%s' host='%s' password='%s'" % (<dbname>,<user>,<host>,<password>))
+except:
+    <action on connection fail>
+ 
+#Efetua a criacao do cursor python com o banco de dados para efetuar a execucao dos sqls
+cur = conn.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
+ 
+#Executa uma query
+cur.execute("<query_sql>")
+ 
+#Obtem o resultado de uma consulta no padrao [{"column_name":<value>},{...}]
+cur.fetchall()
+ 
+#Efetua a confirmação das operações de INSERT,UPDATE e DELETE efetuadas na transação atual
+conn.commit()  Segue abaixo mais um tutorial exemplo de como conectar em banco de dados postgresql utilizando python e a biblioteca psycopg2.
